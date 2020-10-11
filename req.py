@@ -22,10 +22,7 @@ first_index=page_.find('vm.CHAPTERS')+16
 last_index=page_.find('vm.IndexName')-8
 chapter_list=page_[first_index:last_index].split('},{')
 json_=json.loads('{'+chapter_list[0]+'}')
-# print(chapter_list.split(','))
 print(json_)
-# for i in json_:
-#     print(i)
 
 
 
