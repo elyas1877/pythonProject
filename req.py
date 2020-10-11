@@ -13,16 +13,19 @@ def ChapterLinkFounder(a):
 
 
 
-URL = ChapterLinkFounder('We-Never-Learn')[-1]
+URL = ChapterLinkFounder('Hakaijuu')[0]
 page = requests.get(URL)
 soup = BeautifulSoup(page.content, 'html.parser')
 page_script=soup.find_all('script')
 page_=str(page_script[-1])
-first_index=page_.find('vm.CurChapter')+15
-last_index=page_.find('vm.CurPathName')-6
-chapter_list=page_[first_index:last_index]
-json_=json.loads(chapter_list)
-print(json_['Type'])
+first_index=page_.find('vm.CHAPTERS')+16
+last_index=page_.find('vm.IndexName')-8
+chapter_list=page_[first_index:last_index].split('},{')
+json_=json.loads('{'+chapter_list[0]+'}')
+# print(chapter_list.split(','))
+print(json_)
+# for i in json_:
+#     print(i)
 
 
 
