@@ -35,7 +35,9 @@ def download_with_prograss(url):
 
 def download_image(url):
     fullname = str(url).split('/')[-1]
-    urllib.request.urlretrieve(url,fullname)
+    opener = urllib.request.URLopener()
+    opener.addheader('User-Agent', 'whatever')
+    opener.retrieve(url,fullname)
 
 def main():
     for i in get_manga_list('Hakaijuu'):
@@ -43,5 +45,5 @@ def main():
         print(json_)
 
 if __name__=='__main__':
-    download_with_prograss(url='https://img5.downloadha.com/hosein/files/2020/10/RIDE-4-pc-cover-large.jpg')
-    # download_image()
+    download_with_prograss(url='https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
+    download_image('https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
