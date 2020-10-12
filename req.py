@@ -1,5 +1,6 @@
 import re
 import urllib
+
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -35,9 +36,9 @@ def download_with_prograss(url):
 
 def download_image(url):
     fullname = str(url).split('/')[-1]
-    opener = urllib.request.URLopener()
-    opener.addheader('User-Agent', 'whatever')
-    opener.retrieve(url,fullname)
+    r = requests.get(url)
+    with open(fullname, 'wb') as outfile:
+        outfile.write(r.content)
 
 def main():
     for i in get_manga_list('Hakaijuu'):
