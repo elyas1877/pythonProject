@@ -21,8 +21,16 @@ def get_manga_list(name):
     return page_[first_index:last_index].split('},{')
 def download_with_prograss(url):
     r=requests.get(url)
-
-    print(r.headers['Content-Length'])
+    lis=['Byte','KB','MB','GB']
+    lenth = float(r.headers['Content-Length'])
+    i=-1
+    while int(lenth) > 0 :
+     url1 = lenth
+     lenth=lenth/1024
+     # print(url)
+     i=i+1
+     # print(i)
+    print('{} --> {}'.format(url1,lis[i]))
 
 
 def download_image(url):
@@ -35,5 +43,5 @@ def main():
         print(json_)
 
 if __name__=='__main__':
-    download_with_prograss(url='https://cdn.download.ir/?b=dlir-game&f=EveLauncher-1796697.rar')
+    download_with_prograss(url='https://img5.downloadha.com/hosein/files/2020/10/RIDE-4-pc-cover-large.jpg')
     # download_image()
