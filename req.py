@@ -19,15 +19,11 @@ def get_manga_list(name):
     first_index = page_.find('vm.CHAPTERS') + 16
     last_index = page_.find('vm.IndexName') - 8
     return page_[first_index:last_index].split('},{')
-def download_with_prograss(url,path):
-    r = requests.get(url, stream=True)
-    path1=path+str(url).split('/')[-1]
-    with open(path1, 'wb') as f:
-        total_length = int(r.headers.get('content-length'))
-        for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
-            if chunk:
-                f.write(chunk)
-                f.flush()
+def download_with_prograss(url):
+    r=requests.get(url)
+
+    print(r.headers['Content-Length'])
+
 
 def download_image(url):
     fullname = str(url).split('/')[-1]
@@ -39,5 +35,5 @@ def main():
         print(json_)
 
 if __name__=='__main__':
-    # download_with_prograss(url='https://download.ir/wp-content/uploads/2020/04/header-54.jpg')
-    download_image(url='https://download.ir/wp-content/uploads/2020/04/header-54.jpg')
+    download_with_prograss(url='https://cdn.download.ir/?b=dlir-game&f=EveLauncher-1796697.rar')
+    # download_image()
