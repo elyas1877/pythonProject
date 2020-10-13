@@ -1,3 +1,9 @@
+import re
+import requests as req
+from bs4 import BeautifulSoup
+import json
+import ast
+
 baseURL = 'https://mangasee123.com/'
 coverURL = 'https://cover.nep.li/cover/'
 
