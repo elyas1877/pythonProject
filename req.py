@@ -1,10 +1,7 @@
 import re
-import urllib
-
 import requests
 from bs4 import BeautifulSoup
 import json
-from clint.textui import progress
 def ChapterLinkFounder(a):
     URL = 'https://mangasee123.com/rss/{}.xml'.format(a)
     page = requests.get(URL)
@@ -43,8 +40,9 @@ def download_image(url):
 def main():
     for i in get_manga_list('Hakaijuu'):
         json_ = json.loads('{' + i + '}')
-        print(json_)
+        print(i)
 
 if __name__=='__main__':
-    download_with_prograss(url='https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
-    download_image('https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
+    main()
+    # download_with_prograss(url='https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
+    # download_image('https://s1.mangabeast01.com/manga/Hakaijuu/0001-001.png')
