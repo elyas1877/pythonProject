@@ -21,22 +21,26 @@ class Manga:
         page = requests.get(url)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        for x in re.findall('<a class="chapter-name text-nowrap" (.*?)>', str(soup)):
-            chap = {'link': '', 'title': ''}
+        for xx,x in enumerate(re.findall('<a class="chapter-name text-nowrap" (.*?)>', str(soup))):
+            chap = {'link': '', 'title': '','index':''}
             chap['link']=re.findall('href="(.*?)"',x)[0]
             chap['title']=re.findall(' title="(.*?)"',x)[0]
+            chap['index']=xx
             self.Chapters.append(chap)
 
-    def AddTitels(self, name):
-        self.Titels.append(name)
+        self.Chapters = self.Chapters[::-1]
+
 
     def showchapters(self):
         return self.Chapters
+
+
     def __str__(self):
         return f'Name:{self.Name} '
 
 
 
+    # return index1
 URL = 'https://manganelo.com/getstorysearchjson'
 header = {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           'User-Agent': 'PostmanRuntime/7.26.5'}
@@ -53,10 +57,17 @@ for i in Json_:
               i['image'],
               i['author']))
 for j in list:
-    print(j.Name + ' / ' + j.Id_encode + ' / ' + j.Id)
+    print(j.Name + ' / ' + j.Id_encode + ' / ' + j.Id+ ' / ' + j.Lastchapter)
 
 print(list[0].showchapters())
+
 list[0].addChapters()
 # print(list[0].showchapters())
-for k in list[0].showchapters()[::-1]:
-    print(k['link'])
+
+
+# print(list[0].download('https://manganelo.com/chapter/pn918005/chapter_8','https://manganelo.com/chapter/pn918005/chapter_6'))
+for k in list[0].showchapters():
+    print(k)
+
+# for p in list[0].download('https://manganelo.com/chapter/pn918005/chapter_20','https://manganelo.com/chapter/pn918005/chapter_32'):
+#     print(p)

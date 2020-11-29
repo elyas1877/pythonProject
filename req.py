@@ -28,7 +28,7 @@ def download_with_prograss(url):
      # print(url)
      i=i+1
      # print(i)
-    print('{} --> {}'.format(url1,lis[i]))
+    print(f'{url1} --> {lis[i]}')
 
 
 def download_image(url):
