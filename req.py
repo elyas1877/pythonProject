@@ -19,7 +19,7 @@ def get_manga_list(name):
     return page_[first_index:last_index].split('},{')
 def download_with_prograss(url):
     r=requests.get(url)
-    lis=['Byte','KB','MB','GB']
+    lis=('Byte','KB','MB','GB')
     lenth = float(r.headers['Content-Length'])
     i=-1
     while int(lenth) > 0 :
