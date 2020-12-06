@@ -1,7 +1,7 @@
 #
 # from pyrogram import Client, filters
 #
-# app = Client(session_name="my_bot",api_id=2819335,api_hash='5f3cfaf0cd57f5873086ae3fa6ef86b5',proxy={
+# app = Client(session_name="my_bot",api_id=,api_hash='',proxy={
 #         'hostname':"127.0.0.1",
 #         'port':1080,
 #         'username':"",
@@ -29,7 +29,7 @@
 # app.run()
 import time
 from pyrogram import Client, filters
-app = Client(session_name="my_bot",api_id=2819335,api_hash='5f3cfaf0cd57f5873086ae3fa6ef86b5')
+app = Client(session_name="my_bot",api_id=,api_hash='')
 
 '''
 ,proxy={
@@ -48,7 +48,7 @@ def caller(client : Client,message):
 
     def progress(current, total):
         print(f"{current * 100 / total:.1f}%")
-    app.send_document(message.chat.id,'C:\\Users\\Elyas\\PycharmProjects\\pythonProject\\0001-001.png',caption='Page 1',progress=progress)
+    app.send_document(message.chat.id,'C:\\Users\\{User}\\PycharmProjects\\pythonProject\\0001-001.png',caption='Page 1',progress=progress)
     # app.send_message(chat_id=message.chat.id, text=app.get_me())
     # app.send_photo(chat_id=message.chat.id,photo='0001-001.png')
 
