@@ -93,7 +93,7 @@ def create(get : list , id : int) -> list:
     list1=[]
     lenth = len(get)
     # lenthBottun = lenth//4
-    lenthPage = lenth//25
+    lenthPage = lenth//40
     op:int = 0
     for i in range(lenthPage):
         list2 = []
@@ -107,6 +107,27 @@ def create(get : list , id : int) -> list:
             op+=4
             list2.append(list3)
         list1.append(list2)
+    # print(lenth)
+
+    lastPage = lenth%40
+
+    # print(lastPage)
+
+    index = (lenth-lastPage)
+        # op = 0
+    newlist = []
+    for _ in range((lastPage//4)+1):
+        newlist.append([i['index'] for i in get[index:index+4]])
+        index+=4
+
+    list1.append(newlist)
+
+
+        # for new in range(lastPage):
+
+
+
+
         # list1.append([i['title'] for i in get[-(lenthBottun%4):]])
     # list2.clear()
     # print(list1)
